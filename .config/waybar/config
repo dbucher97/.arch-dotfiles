@@ -1,0 +1,149 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "height": 30,
+
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
+    "modules-center": [],
+    "modules-right": ["custom/updates", "custom/storage_root", "custom/storage_home", "backlight", "pulseaudio", "network", "battery", "clock", "tray"],
+    "sway/mode": {
+        "format": " {}"
+    },
+    "sway/workspaces": {
+        "format": "{name}",
+        "disable-scroll": true
+    },
+    "sway/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%a %d %b %H:%M}",
+        "tooltip": false
+    },
+    "battery": {
+        "format": "{icon}",
+        "format-alt": "{time} {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+		"format-charging": "{capacity}% ",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": {
+            "wifi": [""],
+            "ethernet": [""],
+            "disconnected": [""]
+        },
+        "on-click": "alacritty -e nmtui",
+    	"tooltip": false
+    },
+	"cpu": {
+		"format": " {icon}",
+		"format-alt": " {load}% {usage}%",
+		"interval": 1,
+        "format-alt-click": "click-right",
+        "format-icons": {
+			"usage": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+		},
+		"tooltip": false
+	},
+    "pulseaudio": {
+        "format": " {icon}",
+        "format-alt": " {volume}",
+        "format-alt-click": "click-right",
+        "format-muted": "",
+		"format-phone": "test",
+        "format-icons": {
+            "phone": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+            "default": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+            "_phone": [" ", " ", " "],
+            "_default": ["", "", ""]
+        },
+        "scroll-step": 3,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/spotify": {
+        "interval": 1,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/spotify.sh",
+        "exec-if": "pgrep spotify",
+		"on-click": "alacritty -e spt",
+        "escape": true
+    },
+    "custom/storage_root": {
+        "format": " {icon}",
+        "format-alt": " {} {percentage}% ",
+        "format-alt-click": "click-right",
+        "return-type": "json",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh /",
+		"tooltip": false
+    },
+    "custom/storage_home": {
+        "format": " {icon}",
+        "format-alt": " {} {percentage}% ",
+        "format-alt-click": "click-right",
+        "return-type": "json",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh /home",
+		"tooltip": false
+    },
+    "backlight": {
+        "format": " {icon}",
+        "format-alt": " {percent}%",
+        "format-alt-click": "click-right",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "on-scroll-down": "light -U 3",
+        "on-scroll-up": "light -A 3"
+    },
+    "custom/weather": {
+        "format": "{}",
+        "format-alt": "{alt}: {}",
+        "format-alt-click": "click-right",
+        "interval": 1800,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/weather.sh",
+        "exec-if": "ping wttr.in -c1"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": false
+    },
+    "custom/mail": {
+        "format": "",
+        "format-alt": "{alt} ",
+        "format-alt-click": "click-right",
+        "interval": 60,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/mail.py",
+        "tooltip": false
+    },
+	"custom/updates": {
+		"format": "{percentage}  {}",
+		"interval": 300,
+		"return-type": "json",
+		"exec": "~/.config/waybar/modules/updates.sh",
+		"tooltip": true,
+		"on-click": "alacritty -e sudo pacman -Syu; pkill -SIGRTMIN+8 waybar",
+		"on-click-right": "alacritty -e yay -Syua; pkill -SIGRTMIN+8 waybar",
+		"signal": 8
+	},
+    "tray": {
+        "icon-size": 18
+    }
+}
