@@ -5,7 +5,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
     "modules-center": [],
-    "modules-right": ["custom/updates", "custom/storage_root", "custom/storage_home", "backlight", "pulseaudio", "network", "battery", "clock", "tray"],
+    "modules-right": ["custom/updates", "custom/storage_root", "custom/storage_home", "memory", "backlight", "pulseaudio", "network", "battery", "clock", "tray"],
     "sway/mode": {
         "format": " {}"
     },
@@ -33,6 +33,11 @@
         },
         "tooltip": false
     },
+	"memory": {
+	    "interval": 30,
+		"format": " {}%",
+		"max-length": 10
+	},
     "network": {
         "format": "{icon}",
         "format-alt": "{ipaddr}/{cidr} {icon}",
