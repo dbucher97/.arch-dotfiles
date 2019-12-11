@@ -57,7 +57,7 @@ window#waybar.solo {
 }
 
 #clock, #mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight,  #custom-storage_root, #custom-storage_home, #custom-spotify, #custom-weather, #custom-mail, #custom-updates {
-    margin:     0px 10px 0px 10px;
+    margin:     0px 10px 3px 10px;
 	padding: 	2px 2px 0 2px;
 	border-bottom: 2px solid #504945;
     min-width:  30px;

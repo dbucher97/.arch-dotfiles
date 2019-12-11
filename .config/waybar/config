@@ -72,12 +72,12 @@
         "format-muted": "",
 		"format-phone": "test",
         "format-icons": {
-            "phone": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+            "phone": ["▁ ", "▂ ", "▃ ", "▄ ", "▅ ", "▆ ", "▇ ", "█ "],
             "default": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
             "_phone": [" ", " ", " "],
             "_default": ["", "", ""]
         },
-        "scroll-step": 3,
+        "scroll-step": 1,
         "on-click": "pavucontrol",
         "tooltip": false
     },
