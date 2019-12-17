@@ -5,6 +5,7 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/vim-easy-align'
+Plug 'chrisbra/Colorizer'
 
 call plug#end()
 
