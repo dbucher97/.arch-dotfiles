@@ -5,7 +5,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
     "modules-center": [],
-    "modules-right": ["custom/updates", "custom/storage_root", "custom/storage_home", "memory", "backlight", "pulseaudio", "network", "battery", "clock", "tray"],
+    "modules-right": ["custom/updates", "custom/storage_root", "custom/storage_home", "memory", "idle_inhibitor", "backlight", "pulseaudio", "network", "battery", "clock", "tray"],
     "sway/mode": {
         "format": " {}"
     },
@@ -129,8 +129,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         },
         "tooltip": false
     },
@@ -157,3 +157,5 @@
         "icon-size": 18
     }
 }
+
+# vi: ft=yaml

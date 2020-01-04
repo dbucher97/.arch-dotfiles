@@ -29,4 +29,4 @@ set nu rnu
 
 map <Tab> :NERDTreeToggle<Return>
 
-
+autocmd FileType tex nnoremap <leader>ll :!pdflatex %<cr>
