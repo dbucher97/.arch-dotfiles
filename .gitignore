@@ -6,4 +6,8 @@
 !.zshrc
 !README.md
 !.config/
-#!.local/
+!.local/
+.local/*
+!.local/bin/
+.local/bin/*
+!.local/bin/scripts

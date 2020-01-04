@@ -1,0 +1,54 @@
+#! /usr/bin/env sh
+
+ac=$(</sys/class/power_supply/AC/online)
+(([ $1 == "ac" ] && [ $ac == "0" ]) || ([ $1 == "bat" ] && [ $ac == "1" ])) && exit
+
+dimmpid="$HOME/.local/share/dimmpid"
+
+if [ -f "$dimmpid" ]; then
+	kill -9 `< $dimmpid` 2>/dev/null;
+fi
+echo $$ > $dimmpid
+
+
+factor=0.92
+if [ ! -z $2 ]; then
+	factor=$2
+fi
+
+light=$(light)
+
+if [[ $factor == "up" ]]; then
+	[ ! -f $HOME/.local/share/brightness ] && exit
+	brightness=$(<$HOME/.local/share/brightness)
+	rm $HOME/.local/share/brightness
+	[ ${light%.*} -lt "1" ] && light -S 1.1
+	light=$(light)
+	while true; do
+		light=$(echo "$light*1.15" | bc)
+		if [ ${light%.*} -lt ${brightness%.*} ]; then
+			light -S $light
+		else
+			light -S $brightness
+			break
+		fi
+	done
+	# while [ ${light%.*} -lt ${brightness%.*} ]; do
+	# 	light -T 1.5
+	# 	light=$(light)
+	# 	sleep 0.02
+	# done
+	# light -S $brightness
+elif [[ $factor == "black" ]]; then
+	light -S 0
+else
+	echo $light > ~/.local/share/brightness
+	while [ ${light%.*} -ge "1" ]; do
+		light -T $factor
+		light=$(light)
+		sleep 0.02
+	done
+	light -S 1
+fi
+
+[ -f "$dimmpid" ] && rm $dimmpid

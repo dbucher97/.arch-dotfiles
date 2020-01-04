@@ -1,0 +1,21 @@
+#! /usr/bin/env sh
+
+export PATH=$PATH:$HOME/.local/bin/scripts/
+
+if [ $(</sys/class/power_supply/AC/online) == 1 ]; then
+	dimm-screen up &
+	swayidle -w timeout 600 'dimm-screen &' \
+					resume 'dimm-screen up &' \
+				 timeout 1800 'swaylock -f' \
+				 after-resume 'dimm-screen up &' \
+				 before-sleep 'swaylock -f' 2>> $HOME/dlog
+else
+	swayidle -w timeout 6 "dimm-screen &" \
+					resume "dimm-screen up &" \
+				 timeout 18 "light -S 0" \
+				 timeout 30 "swaylock -f" \
+				 timeout 40 "systemctl suspend" \
+				 after-resume "dimm-screen up &" \
+				 before-sleep "swaylock -f" 2>> $HOME/dlog
+fi
+

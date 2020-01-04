@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+echo $PATH > $HOME/dlog
+systemctl --user restart sway-idle.service >> $HOME/dlog

@@ -1,0 +1,15 @@
+#! /usr/bin/env sh
+
+[ ! -d $HOME/.local/share/sway ] && mkdir $HOME/.local/share/sway
+
+x=($(swaymsg -r -t "get_workspaces" | jq ".[] | select(.focused==true) | .name, .rect.x"))
+name=$(echo ${x[0]} | tr -d '"')
+gaps=0
+if [ ${x[1]} -gt 0 ]; then
+	echo ${x[1]} > $HOME/.local/share/sway/ws_$name
+elif [ -f $HOME/.local/share/sway/ws_$name ]; then
+	gaps=$(<$HOME/.local/share/sway/ws_$name)
+else
+	gaps=20
+fi
+swaymsg "gaps inner current set $gaps"

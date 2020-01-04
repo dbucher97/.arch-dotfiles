@@ -1,0 +1,63 @@
+#! /usr/bin/env python3
+
+import requests, os
+from bs4 import BeautifulSoup
+
+BASE = "/home/david/master/"
+
+uni_link = "https://www.physik.uni-muenchen.de/lehre/vorlesungen/wise_19_20/"
+
+vls = {
+        "GR/Tutorial":   uni_link + "tvi_tc1_gr/Tutorials/index.html",
+        "QM2/Tutorial":  uni_link + "T_M1_TV_-Quantum-Mechanics-II/Tutorials/index.html",
+        "TCMP/Tutorial": uni_link + "TVI_TMP-TA1_solid-state/exercises/index.html",
+        "TCMP/Lecture":   uni_link + "TVI_TMP-TA1_solid-state/lecture-notes/index.html",
+        "CMMP/Tutorial": uni_link + "Vorlesung_-Computational-methods-in-medical-physics/seminar_uebung/index.html",
+        "CMMP/Lecture":   uni_link + "Vorlesung_-Computational-methods-in-medical-physics/vorlesungsmaterial/index.html",
+}
+
+def extras(name, link):
+    if name == "TCMP/Tutorial":
+        if "Sol" in link[1]:
+            name = "TCMP/Solution"
+    elif name == "TCMP/Lecture":
+        f = os.path.join(BASE, name)
+        lecs = [x for x in os.listdir(f) if x[:3] == "lec"]
+        lecs = " ".join(map(lambda x: os.path.join(f, x), 
+            sorted(lecs, key=lambda x: int(x[3:-4]))))
+        os.system("pdfunite {} {}/TCMP/lecture.pdf".format(lecs, BASE))
+    return name.replace("/", " ")
+
+def base_link(link):
+    while(link[-1] != "/"):
+        link = link[:-1]
+    return link
+
+pdf_links = {}
+
+for vl, link in vls.items():
+    soup = BeautifulSoup(requests.get(link).content, features="lxml")
+    bl = base_link(link)
+    contentarea = soup.find("div", {"id": "contentcontainer"})
+    links = contentarea.findAll("a")
+    pdf_links[vl] = []
+    for l in links:
+        if l["href"][-3:] == "pdf":
+            x = l["href"]
+            if "/" in x:
+                i = x.find("/")
+                bl_2 = bl + x[:i+1]
+                x = x[i+1:]
+            else:
+                bl_2 = bl
+            pdf_links[vl] += [(bl_2, x)]
+
+for name, links in pdf_links.items():
+    os.makedirs(BASE+name, exist_ok=True)
+    for link in links:
+        f = os.path.join(BASE+name, link[1])
+        if not os.path.isfile(f):
+            os.system('wget -q --output-document="{}" --user={} --password={} {}'.format(
+                f, "David.Bucher", "wakeman1", link[0]+link[1]))
+            name1 = extras(name, links)
+            os.system('notify-send --urgency=normal "New {}!" "{} downloaded."'.format(name1, link[1]))
