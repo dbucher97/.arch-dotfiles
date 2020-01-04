@@ -4,5 +4,6 @@
 !.profile
 !.gitconfig
 !.zshrc
+!README.md
 !.config/
 #!.local/
