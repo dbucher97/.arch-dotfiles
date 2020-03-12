@@ -4,9 +4,7 @@ export PATH=$PATH:$HOME/.local/bin/scripts/
 
 
 swayidle -w timeout 600 'dimm-screen ac &' \
-				resume 'dimm-screen all up &' \
 			timeout 1800 'sway-lock ac' \
-			after-resume 'dimm-screen up &' \
 			timeout 60 "dimm-screen bat &" \
 				resume "dimm-screen all up &" \
 			timeout 180 "dimm-screen bat black" \

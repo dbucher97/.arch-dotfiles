@@ -2,7 +2,6 @@
     "layer": "bottom",
     "position": "bottom",
     "height": 30,
-
     "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
     "modules-center": [],
     "modules-right": ["custom/updates", "custom/storage_root", "custom/storage_home", "memory", "idle_inhibitor", "backlight", "pulseaudio", "network", "battery", "clock", "tray"],
@@ -100,8 +99,8 @@
 		"tooltip": false
     },
     "custom/storage_home": {
-        "format": " {icon}",
-        "format-alt": " {} {percentage}% ",
+        "format": " {icon}",
+        "format-alt": " {} {percentage}% ",
         "format-alt-click": "click-right",
         "return-type": "json",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
@@ -149,8 +148,8 @@
 		"return-type": "json",
 		"exec": "~/.config/waybar/modules/updates.sh",
 		"tooltip": true,
-		"on-click": "alacritty -e sudo pacman -Syu; pkill -SIGRTMIN+8 waybar",
-		"on-click-right": "alacritty -e yay -Syua; pkill -SIGRTMIN+8 waybar",
+		"on-click": "alacritty -t floating-pacman -e sudo pacman -Syu; pkill -SIGRTMIN+8 waybar",
+		"on-click-right": "alacritty -t floating-yay -e yay -Syua; pkill -SIGRTMIN+8 waybar",
 		"signal": 8
 	},
     "tray": {

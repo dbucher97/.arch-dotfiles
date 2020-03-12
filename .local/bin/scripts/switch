@@ -1,0 +1,6 @@
+#! /usr/bin/env sh
+
+tmp=/tmp/$(basename "$1")
+mv $1 $tmp
+mv $2 $1
+mv $tmp $2

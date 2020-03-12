@@ -14,6 +14,7 @@ vls = {
         "TCMP/Lecture":   uni_link + "TVI_TMP-TA1_solid-state/lecture-notes/index.html",
         "CMMP/Tutorial": uni_link + "Vorlesung_-Computational-methods-in-medical-physics/seminar_uebung/index.html",
         "CMMP/Lecture":   uni_link + "Vorlesung_-Computational-methods-in-medical-physics/vorlesungsmaterial/index.html",
+#        "ASSP/Tutorial":   uni_link + "EM1_Advanced_Solid_State_Physics/uebung/index.html",
 }
 
 def extras(name, link):
@@ -25,7 +26,27 @@ def extras(name, link):
         lecs = [x for x in os.listdir(f) if x[:3] == "lec"]
         lecs = " ".join(map(lambda x: os.path.join(f, x), 
             sorted(lecs, key=lambda x: int(x[3:-4]))))
-        os.system("pdfunite {} {}/TCMP/lecture.pdf".format(lecs, BASE))
+        os.system("pdftk {} cat output {}TCMP/lecture1.pdf".format(lecs, BASE))
+        os.system("pdftk {0}TCMP/lecture1.pdf dump_data output {0}TCMP/meta.txt".format(BASE))
+        os.system("pdftotext {0}/TCMP/lecture1.pdf".format(BASE))
+        chaps = {}
+        with open("{}TCMP/lecture1.txt".format(BASE), "r") as f:
+            for line in f:
+                if "Seite" in line:
+                    x = line.replace("Seite", "#").split("#")[0].strip()
+                    if x in chaps:
+                        chaps[x] += 1
+                    else:
+                        chaps[x] = 1
+        with open("{}TCMP/meta.txt".format(BASE), "a") as f:
+            p = 1
+            for chap, page in chaps.items():
+                f.write("BookmarkBegin\nBookmarkTitle: {}\nBookmarkLevel: 1\nBookmarkPageNumber: {}\n".format(chap, p))
+                p += page
+        os.system("pdftk {0}TCMP/lecture1.pdf update_info {0}TCMP/meta.txt output {0}TCMP/lecture.pdf".format(BASE))
+        os.remove("{}TCMP/lecture1.pdf".format(BASE))
+        os.remove("{}TCMP/meta.txt".format(BASE))
+        os.remove("{}/TCMP/lecture1.txt".format(BASE))
     return name.replace("/", " ")
 
 def base_link(link):

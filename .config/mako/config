@@ -1,2 +1,21 @@
-background-color=#FF0000AA
+background-color=#ebdbb2
+progress-color=source #ff0000
+text-color=#282828
+border-size=2
+font=FiraSans 12
+margin=30
+padding=10,0,30
+icons=1
 border-radius=20
+anchor=top-center
+default-timeout=5000
+
+[urgency=low]
+border-color=#83a598
+
+[urgency=normal]
+border-color=#b8bb26
+
+[urgency=high]
+border-color=#fb4934
+ignore-timeout=1

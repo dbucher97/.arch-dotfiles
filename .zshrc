@@ -87,7 +87,7 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export MOZ_ENABLE_WAYLAND=1
 
-export PATH=$PATH:~/.local/bin/scripts:~/.cargo/bin
+export PATH=$PATH:~/.local/bin/scripts:~/.cargo/bin:~/.local/bin
 
 
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -113,3 +113,5 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #
 # Keyring
 eval $(keychain --eval --quiet id_rsa)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
