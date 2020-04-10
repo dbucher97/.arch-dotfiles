@@ -51,22 +51,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <silent> gR <Plug>(coc-rename)
 nmap <silent> ge <Plug>(coc-refactor)
 " the <CR> should not be necessary but i get some unwanted output
-nmap <silent> ga <Plug>(coc-codeaction-selected)<CR>
-vmap <silent> ga <Plug>(coc-codeaction-selected)<CR>
+vmap <silent> gw <Plug>(coc-codeaction-selected)<CR>
+nmap <silent> gw <Plug>(coc-codeaction-selected)<CR>
 nmap <silent> gA :CocAction <CR>
 nmap <silent> gf <Plug>(coc-fix-current)
 
 " quickfix avaiable throug CtrlP
 autocmd User CocQuickfixChange :CtrlPQuickfix<CR>
-
-
-" === coc-flutter ===
-autocmd FileType dart nnoremap <leader>fr :CocCommand flutter.run<CR> |
-			\ nnoremap <leader>fH :CocCommand flutter.dev.hotReload<CR> |
-			\ nnoremap <leader>fh :CocCommand flutter.dev.hotRestart<CR> |
-			\ nnoremap <leader>fp :CocCommand flutter.pub.get<CR> |
-			\ nnoremap <leader>fl :CocCommand flutter.dev.openDevLog<CR> |
-			\ nnoremap <leader>fq :CocCommand flutter.dev.quit<CR>
 
 " === coc-snippets ===
 " Use <C-j> for select text for visual placeholder of snippet.

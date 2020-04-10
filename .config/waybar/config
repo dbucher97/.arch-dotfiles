@@ -1,6 +1,7 @@
 {
     "layer": "bottom",
     "position": "bottom",
+    "font-family": "Hack Nerd Font",
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode", "custom/spotify"],
     "modules-center": [],
@@ -29,7 +30,7 @@
         "format": "{icon}",
         "format-alt": "{time} {capacity}%",
         "format-icons": ["", "", "", "", ""],
-		"format-charging": "{capacity}% ",
+		"format-charging": "{capacity}% ",
         "interval": 30,
         "states": {
             "warning": 25,
@@ -99,8 +100,8 @@
 		"tooltip": false
     },
     "custom/storage_home": {
-        "format": " {icon}",
-        "format-alt": " {} {percentage}% ",
+        "format": " {icon}",
+        "format-alt": " {} {percentage}% ",
         "format-alt-click": "click-right",
         "return-type": "json",
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],

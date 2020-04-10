@@ -3,30 +3,38 @@
 
 " Plugins using vimplug
 call plug#begin('~/.vim/plugged')
-	" Colorscheme
-	Plug 'morhetz/gruvbox'
-	Plug 'ryanoasis/vim-devicons'
+    " Colorscheme
+    Plug 'morhetz/gruvbox'
+    Plug 'ryanoasis/vim-devicons'
 
-	" Utils
-	Plug 'chrisbra/Colorizer'
-	Plug 'yuttie/comfortable-motion.vim'
-	Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-"	Plug 'Xuyuanp/nerdtree-git-plugin'
-	Plug 'kien/ctrlp.vim'
-	Plug 'junegunn/vim-easy-align'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'junegunn/gv.vim'
-	Plug 'tpope/vim-surround'
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'terryma/vim-multiple-cursors'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+    " Utils
+    Plug 'chrisbra/Colorizer'
+    Plug 'yuttie/comfortable-motion.vim'
+    Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+    "	Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'kien/ctrlp.vim'
+    Plug 'junegunn/vim-easy-align'
+    " Plug 'jiangmiao/auto-pairs'
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'junegunn/gv.vim'
+    Plug 'tpope/vim-surround'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'Yggdroot/indentLine'
+    Plug 'mattn/emmet-vim'
+    Plug 'junegunn/goyo.vim'
 
-	" Languages
-	Plug 'dart-lang/dart-vim-plugin'
+
+    " Languages
+    Plug 'sheerun/vim-polyglot'
+    " Plug 'dart-lang/dart-vim-plugin'
+    " Plug 'mxw/vim-jsx'
+    " Plug 'pangloss/vim-javascript'
+
 call plug#end()
 
 source ~/.config/nvim/settings.vim

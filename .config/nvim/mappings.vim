@@ -1,3 +1,12 @@
+" better split navigation
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+nnoremap <M-H> <C-w>H
+nnoremap <M-J> <C-w>J
+nnoremap <M-K> <C-w>K
+nnoremap <M-L> <C-w>L
 " clear search results
 nnoremap <leader>n :noh<cr>
 
@@ -11,10 +20,12 @@ nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
 
 " quickfix mapping, nextfile jumps
-nnoremap <silent> <Up> :cprevious<CR>
-nnoremap <silent> <Down> :cnext<CR>
+nmap <Up> <Plug>(coc-diagnostic-prev)
+nmap <Down> <Plug>(coc-diagnostic-next)
 nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
+
+imap <C-f> <Esc><Plug>(coc-format)i
 
 " project
 " toggle a horizontal split and switch to it (,h)

@@ -86,11 +86,13 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export MOZ_ENABLE_WAYLAND=1
+export XDG_CURRENT_DESKTOP=sway
 
 export PATH=$PATH:~/.local/bin/scripts:~/.cargo/bin:~/.local/bin
 
 
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias frun='/usr/bin/flutter run --pid-file ~/.flutter.pid'
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -98,6 +100,14 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #   export EDITOR='mvim'
 # fi
 
+export LESS=-R
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
