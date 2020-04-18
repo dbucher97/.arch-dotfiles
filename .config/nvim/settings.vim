@@ -42,8 +42,8 @@ set listchars+=trail:•                            " mark trailing whitespaces.
 set hidden                                        " allow buffer to be hidden without save.
 set showmatch                                     " show matching brackets.
 set hlsearch                                      " highilight all search results.
-set colorcolumn=110                               " display column at row 120.
 set textwidth=109                                 " max text width.
+set colorcolumn=110
 set nojoinspaces                                  " don't autoinsert two spaces when joining lines with '.'
 set formatoptions+=j                              " remove comment character when joining lines.
 set formatoptions+=n                              " indent numbered lists.
@@ -53,7 +53,7 @@ let &showbreak='↳ '                               " display this char when bre
 set breakindent                                   " indent wrapped lines.
 set breakindentopt=sbr                            " use the arrow.
 set updatetime=750                                " update time for CursorHold
-set completeopt=menuone,preview,noinsert          " set the wompletion window options
+set completeopt=menuone,preview,noinsert          " set the completion window options
 set shortmess+=c                                  " disable completion messages.
 set mouse=a                                       " enable mouse support
 set scl=yes:1                                     " always show sign column on left

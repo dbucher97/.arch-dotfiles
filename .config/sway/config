@@ -324,4 +324,6 @@ bar {
 	for_window [app_id="org.gnome.Nautilus"] floating enabled
 	for_window [title="^floating"] floating enabled
 
+# xwayland disable
+
 include /etc/sway/config.d/*

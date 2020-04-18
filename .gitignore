@@ -11,3 +11,4 @@
 !.local/bin/
 .local/bin/*
 !.local/bin/scripts
+!.oh-my-zsh/
