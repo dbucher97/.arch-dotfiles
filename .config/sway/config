@@ -40,7 +40,7 @@ output HDMI-A-2 position 1882,0
 exec "$HOME/.local/bin/scripts/sway-idle"
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="zathura"] inhibit_idle fullscreen
-#
+for_window [instance="zoom"] inhibit_idle fullscreen
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -322,6 +322,7 @@ bar {
 	exec firefox
 	exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 	for_window [app_id="org.gnome.Nautilus"] floating enabled
+	for_window [instance="^zoom"] floating enabled
 	for_window [title="^floating"] floating enabled
 
 # xwayland disable

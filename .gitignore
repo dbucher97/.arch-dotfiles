@@ -11,10 +11,3 @@
 !.local/bin/
 .local/bin/*
 !.local/bin/scripts
-!.oh-my-zsh/
-!.local/share/
-.local/share/*
-!.local/share/nvim/
-.local/share/nvim/*
-!.local/share/nvim/site/
-

@@ -8,13 +8,7 @@ BASE = "/home/david/master/"
 uni_link = "https://www.physik.uni-muenchen.de/lehre/vorlesungen/wise_19_20/"
 
 vls = {
-        "GR/Tutorial":   uni_link + "tvi_tc1_gr/Tutorials/index.html",
-        "QM2/Tutorial":  uni_link + "T_M1_TV_-Quantum-Mechanics-II/Tutorials/index.html",
-        "TCMP/Tutorial": uni_link + "TVI_TMP-TA1_solid-state/exercises/index.html",
-        "TCMP/Lecture":   uni_link + "TVI_TMP-TA1_solid-state/lecture-notes/index.html",
-        "CMMP/Tutorial": uni_link + "Vorlesung_-Computational-methods-in-medical-physics/seminar_uebung/index.html",
-        "CMMP/Lecture":   uni_link + "Vorlesung_-Computational-methods-in-medical-physics/vorlesungsmaterial/index.html",
-#        "ASSP/Tutorial":   uni_link + "EM1_Advanced_Solid_State_Physics/uebung/index.html",
+        "IFT/Tutorial":   "https://wwwmpa.mpa-garching.mpg.de/~ensslin/lectures/lectures.html"
 }
 
 def extras(name, link):
@@ -54,12 +48,17 @@ def base_link(link):
         link = link[:-1]
     return link
 
+def contents(vl, soup):
+    if(vl=="IFT/Tutorial"):
+         return soup.find("section", {"id": "Tutorials"})
+    return soup.find("div", {"id": "contentcontainer"})
+
 pdf_links = {}
 
 for vl, link in vls.items():
     soup = BeautifulSoup(requests.get(link).content, features="lxml")
     bl = base_link(link)
-    contentarea = soup.find("div", {"id": "contentcontainer"})
+    contentarea = contents(vl, soup)
     links = contentarea.findAll("a")
     pdf_links[vl] = []
     for l in links:

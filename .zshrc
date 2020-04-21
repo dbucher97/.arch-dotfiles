@@ -83,12 +83,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export MOZ_ENABLE_WAYLAND=1
-export XDG_CURRENT_DESKTOP=sway
 
-export PATH=$PATH:~/.local/bin/scripts:~/.cargo/bin:~/.local/bin
 
 
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -121,7 +116,4 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
-# Keyring
-eval $(keychain --eval --quiet id_rsa)
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
