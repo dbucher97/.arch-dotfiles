@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 
+PATH=$PATH:~/.local/bin/scripts:~/.cargo/bin:~/.local/bin
 
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias frun='/usr/bin/flutter run --pid-file ~/.flutter.pid'

@@ -89,3 +89,6 @@ highlight GitGutterAdd    guifg=#98971a guibg=none ctermfg=2 ctermbg=none
 highlight GitGutterChange guifg=#458588 guibg=none ctermfg=3 ctermbg=none
 highlight GitGutterDelete guifg=#cc241d guibg=none ctermfg=1 ctermbg=none
 highlight GitGutterChangeDelete guifg=#b16286 guibg=none ctermfg=1 ctermbg=none
+
+" Vimtex
+let g:vimtex_view_general_viewer = 'zathura'

@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
 
     " Languages
     Plug 'sheerun/vim-polyglot'
+    Plug 'lervag/vimtex'
     " Plug 'dart-lang/dart-vim-plugin'
     " Plug 'mxw/vim-jsx'
     " Plug 'pangloss/vim-javascript'
